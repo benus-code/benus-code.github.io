@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mbong Joseph Lustigier — Full-Stack & DevOps</title>
+<meta name="description" content="Mbong Joseph Lustigier (benus-code) — Développeur Full-Stack & DevOps. Du code à la production : VPS, Docker, automatisation et services live avec de vrais utilisateurs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#efe9dd;
+    --paper-2:#e7e0d0;
+    --ink:#211d17;
+    --ink-soft:#4b463c;
+    --muted:#857d6c;
+    --line:#c9c0ac;
+    --accent:oklch(0.58 0.18 35);   /* vermillon */
+    --accent-soft:oklch(0.58 0.18 35 / .12);
+    --serif:'Instrument Serif',Georgia,serif;
+    --read:'Newsreader',Georgia,serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  ::selection{background:var(--accent);color:var(--paper)}
+  body{
+    background:var(--paper);color:var(--ink);font-family:var(--read);
+    font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+    background-image:
+      repeating-linear-gradient(0deg,transparent,transparent 38px,rgba(33,29,23,.025) 38px,rgba(33,29,23,.025) 39px);
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 36px}
+  .mono{font-family:var(--mono)}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(239,233,221,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+  .logo b{color:var(--accent)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-family:var(--mono);font-size:.76rem;letter-spacing:.02em;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .lang-btn{font-family:var(--mono);font-size:.74rem;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:5px 11px;cursor:pointer;transition:all .2s;letter-spacing:.04em}
+  .lang-btn:hover{background:var(--ink);color:var(--paper)}
+  @media(max-width:720px){.nav-links a:not(.lang-btn){display:none}}
+
+  /* HERO */
+  header{padding:88px 0 64px;border-bottom:1px solid var(--line)}
+  .hero-meta{display:flex;gap:18px;align-items:center;font-family:var(--mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:34px}
+  .hero-meta .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-soft)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.2rem,9vw,6.6rem);line-height:.96;letter-spacing:-.5px;margin-bottom:28px}
+  h1 em{font-style:italic;color:var(--accent)}
+  .subtitle{font-family:var(--read);font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:300;color:var(--ink-soft);max-width:660px;margin-bottom:38px}
+  .subtitle b{font-weight:500;color:var(--ink)}
+  .cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{font-family:var(--mono);font-size:.8rem;letter-spacing:.03em;padding:13px 22px;transition:all .22s;cursor:pointer;border:1px solid var(--ink)}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--accent);border-color:var(--accent)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .link-inline{font-family:var(--mono);font-size:.8rem;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:2px;transition:all .2s}
+  .link-inline:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:60px;border-top:1px solid var(--line)}
+  .stat{padding:24px 22px 22px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  .stat .n{font-family:var(--serif);font-size:2.8rem;line-height:1;color:var(--ink)}
+  .stat .l{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:8px}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}}
+
+  /* SECTION */
+  section{padding:74px 0}
+  .sec-head{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:baseline;margin-bottom:46px}
+  .sec-num{font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.05em;padding-top:6px}
+  .sec-title{font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);font-weight:400;letter-spacing:-.5px;line-height:1}
+  @media(max-width:680px){.sec-head{grid-template-columns:1fr;gap:6px}}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:56px}
+  @media(max-width:780px){.about-grid{grid-template-columns:1fr;gap:36px}}
+  .about p{color:var(--ink-soft);margin-bottom:18px;font-size:1.12rem;font-weight:300}
+  .about p b{font-weight:500;color:var(--ink)}
+  .skills h4{font-family:var(--mono);font-size:.74rem;color:var(--muted);margin-bottom:18px;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line);padding-bottom:10px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:var(--mono);font-size:.74rem;padding:5px 10px;border:1px solid var(--line);color:var(--ink-soft);transition:all .2s;background:var(--paper-2)}
+  .chip:hover{border-color:var(--accent);color:var(--accent);background:transparent}
+
+  /* PROJECTS — ledger */
+  .ledger{border-top:1px solid var(--ink)}
+  .row{display:grid;grid-template-columns:54px 1.1fr 1.3fr auto;gap:28px;align-items:start;
+       padding:26px 6px;border-bottom:1px solid var(--line);transition:background .25s,padding .25s;position:relative}
+  .row:hover{background:var(--paper-2);padding-left:18px}
+  .row .idx{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding-top:5px}
+  .row:hover .idx{color:var(--accent)}
+  .row .name{font-family:var(--serif);font-size:1.7rem;line-height:1.05}
+  .row .name .live{font-family:var(--mono);font-size:.62rem;color:var(--accent);vertical-align:middle;border:1px solid var(--accent);padding:2px 6px;margin-left:10px;letter-spacing:.05em}
+  .row .name .lock{font-family:var(--mono);font-size:.62rem;color:var(--muted);vertical-align:middle;border:1px solid var(--line);padding:2px 6px;margin-left:10px}
+  .row .desc{color:var(--ink-soft);font-size:.98rem;font-weight:300}
+  .row .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .row .stack span{font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.02em}
+  .row .stack span::after{content:"·";margin-left:6px;color:var(--line)}
+  .row .stack span:last-child::after{content:""}
+  .row .links{display:flex;flex-direction:column;gap:8px;align-items:flex-end;padding-top:6px}
+  .row .links a{font-family:var(--mono);font-size:.72rem;color:var(--muted);transition:color .2s;white-space:nowrap}
+  .row .links a::before{content:"↗ "}
+  .row .links a:hover{color:var(--accent)}
+  @media(max-width:840px){
+    .row{grid-template-columns:32px 1fr;gap:14px}
+    .row .desc{grid-column:1/-1;padding-left:46px}
+    .row .links{grid-column:1/-1;flex-direction:row;align-items:flex-start;padding-left:46px}
+  }
+
+  /* TIMELINE (exp + education) */
+  .tl{display:flex;flex-direction:column}
+  .tl-item{display:grid;grid-template-columns:160px 1fr;gap:36px;padding:26px 0;border-top:1px solid var(--line)}
+  .tl-item:first-child{border-top:1px solid var(--ink)}
+  .tl-date{font-family:var(--mono);font-size:.8rem;color:var(--accent);letter-spacing:.02em;padding-top:6px}
+  .tl-body h3{font-family:var(--serif);font-size:1.5rem;font-weight:400;line-height:1.1;margin-bottom:8px}
+  .tl-org{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin-bottom:14px}
+  .tl-org a{color:var(--ink-soft);border-bottom:1px solid var(--line)}
+  .tl-org a:hover{color:var(--accent);border-color:var(--accent)}
+  .tl-bullets{list-style:none}
+  .tl-bullets li{color:var(--ink-soft);font-size:1rem;font-weight:300;padding:4px 0 4px 22px;position:relative}
+  .tl-bullets li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+  .tl-detail{color:var(--ink-soft);font-size:1rem;font-weight:300}
+  .badge-h{font-family:var(--mono);font-size:.66rem;background:var(--accent);color:var(--paper);padding:3px 8px;margin-right:8px;letter-spacing:.03em}
+  @media(max-width:680px){.tl-item{grid-template-columns:1fr;gap:8px}.tl-date{padding-top:0}}
+
+  /* CONTACT */
+  .contact{padding:96px 0 70px;border-top:1px solid var(--ink)}
+  .contact h2{font-family:var(--serif);font-size:clamp(2.6rem,7vw,5rem);font-weight:400;line-height:.98;letter-spacing:-.5px;margin-bottom:22px;max-width:14ch}
+  .contact h2 em{font-style:italic;color:var(--accent)}
+  .contact p{color:var(--ink-soft);font-size:1.15rem;font-weight:300;margin-bottom:34px;max-width:520px}
+  .contact-links{display:flex;gap:14px;flex-wrap:wrap}
+
+  footer{border-top:1px solid var(--line);padding:30px 0}
+  footer p{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.02em}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  [data-en]{display:none}
+  body.en [data-fr]{display:none}
+  body.en [data-en]{display:inline}
+  body.en [data-en].block{display:block}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .hero-meta .dot{animation:none}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="logo">Mbong J. Lustigier <b>/ benus-code</b></div>
+    <div class="nav-links">
+      <a href="#about"><span data-fr>À propos</span><span data-en>About</span></a>
+      <a href="#experience"><span data-fr>Expérience</span><span data-en>Experience</span></a>
+      <a href="#projects"><span data-fr>Projets</span><span data-en>Projects</span></a>
+      <a href="#education"><span data-fr>Formation</span><span data-en>Education</span></a>
+      <a href="#contact">Contact</a>
+      <button class="lang-btn" id="langToggle">EN</button>
+    </div>
+  </div>
+</nav>
+
+<header class="wrap">
+  <div class="hero-meta reveal">
+    <span class="dot"></span>
+    <span data-fr>Disponible pour de nouvelles opportunités</span><span data-en>Open to new opportunities</span>
+    <span>— Tomsk, RU</span>
+  </div>
+  <h1 class="reveal">
+    <span data-fr>Je construis,<br>déploie &amp; <em>opère</em><br>des produits réels.</span>
+    <span data-en class="block">I build, ship<br>&amp; <em>operate</em><br>real products.</span>
+  </h1>
+  <p class="subtitle reveal">
+    <span data-fr><b>Développeur Full-Stack &amp; DevOps.</b> Du code à la production — VPS, Docker, automatisation, et des services qui tournent avec de vrais utilisateurs payants.</span>
+    <span data-en class="block"><b>Full-Stack Developer &amp; DevOps.</b> From code to production — VPS, Docker, automation, and live services with real paying users.</span>
+  </p>
+  <div class="cta reveal">
+    <a class="btn btn-primary" href="#projects"><span data-fr>Voir les projets</span><span data-en>View projects</span></a>
+    <a class="btn btn-ghost" href="CV_Mbong_Joseph_Lustigier_EN.docx" download><span data-fr>Télécharger le CV</span><span data-en>Download CV</span></a>
+    <a class="link-inline" href="#contact"><span data-fr>Me contacter →</span><span data-en>Get in touch →</span></a>
+  </div>
+
+  <div class="stats">
+    <div class="stat reveal"><div class="n">50+</div><div class="l"><span data-fr>Abonnés VPN actifs</span><span data-en>Active VPN users</span></div></div>
+    <div class="stat reveal"><div class="n">5+</div><div class="l"><span data-fr>Projets déployés</span><span data-en>Deployed projects</span></div></div>
+    <div class="stat reveal"><div class="n">M2</div><div class="l"><span data-fr>Master Info — TUSUR</span><span data-en>MSc CS — TUSUR</span></div></div>
+    <div class="stat reveal"><div class="n">3</div><div class="l"><span data-fr>Langues parlées</span><span data-en>Languages</span></div></div>
+  </div>
+</header>
+
+<section id="about" class="wrap">
+  <div class="sec-head">
+    <span class="sec-num">01 / <span data-fr>À propos</span><span data-en>About</span></span>
+    <h2 class="sec-title"><span data-fr>Faire tourner des choses qui marchent.</span><span data-en>Running things that actually work.</span></h2>
+  </div>
+  <div class="about-grid">
+    <div class="about reveal">
+      <p data-fr>Développeur et ingénieur système. Je conçois, déploie et fais tourner des produits en production — pas seulement du code dans un dossier, mais des services vivants avec de vrais utilisateurs.</p>
+      <p data-en class="block">Developer and systems engineer. I design, deploy and run products in production — not just code in a folder, but live services with real users.</p>
+
+      <p data-fr>Actuellement en <b>Master 2 informatique à TUSUR</b> (Tomsk, Russie), je développe un chatbot intelligent bilingue (RASA + RAG, open source) pour l'accompagnement des étudiants étrangers.</p>
+      <p data-en class="block">Currently in my <b>2nd-year MSc in Computer Science at TUSUR</b> (Tomsk, Russia), I'm building a bilingual intelligent chatbot (RASA + RAG, open source) to support international students.</p>
+
+      <p data-fr>En parallèle, j'opère mon propre service VPN auto-hébergé, je développe des applications web et mobiles, et j'automatise des workflows. Ce qui me guide : <b>livrer des choses qui fonctionnent.</b></p>
+      <p data-en class="block">Alongside, I run my own self-hosted VPN service, build web and mobile apps, and automate workflows. What drives me: <b>shipping things that actually work.</b></p>
+    </div>
+    <div class="skills reveal">
+      <h4>Stack &amp; Tools</h4>
+      <div class="chips">
+        <span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">VPS</span>
+        <span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">n8n</span>
+        <span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">SQLite</span>
+        <span class="chip">RAG</span><span class="chip">LLM</span><span class="chip">RASA</span>
+        <span class="chip">Flask</span><span class="chip">React</span><span class="chip">Telegram API</span>
+        <span class="chip">Nginx</span><span class="chip">Git</span><span class="chip">QoS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="wrap">
+  <div class="sec-head">
+    <span class="sec-num">02 / <span data-fr>Expérience</span><span data-en>Experience</span></span>
+    <h2 class="sec-title"><span data-fr>Expérience professionnelle</span><span data-en>Professional Experience</span></h2>
+  </div>
+  <div class="tl">
+    <div class="tl-item reveal">
+      <div class="tl-date">2023 — <span data-fr>actuel</span><span data-en>present</span></div>
+      <div class="tl-body">
+        <h3><span data-fr>Monteur en électronique — Soudure CMS/SMT &amp; Assemblage</span><span data-en>Electronic Assembler — SMT/SMD Soldering &amp; Assembly</span></h3>
+        <p class="tl-org">Завод ЭргоЛайт · <a href="https://ergolight.ru" target="_blank" rel="noopener">ergolight.ru</a> · Tomsk, <span data-fr>Russie</span><span data-en>Russia</span></p>
+        <ul class="tl-bullets">
+          <li><span data-fr>Soudure et placement de composants en technologie CMS / SMT sur cartes électroniques.</span><span data-en class="block">SMT/SMD soldering and component placement on electronic boards.</span></li>
+          <li><span data-fr>Assemblage et intégration de produits finis selon les standards qualité de production.</span><span data-en class="block">Assembly and integration of finished products to production quality standards.</span></li>
+          <li><span data-fr>Environnement industriel exigeant rigueur, précision et fiabilité.</span><span data-en class="block">Industrial environment requiring rigor, precision and reliability.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date">2021 — 2022</div>
+      <div class="tl-body">
+        <h3><span data-fr>Conseiller technique fibre optique — Clients SFR</span><span data-en>Fiber-Optic Technical Advisor — SFR Customers</span></h3>
+        <p class="tl-org">Intelcia · Douala, <span data-fr>Cameroun</span><span data-en>Cameroon</span></p>
+        <ul class="tl-bullets">
+          <li><span data-fr>Support technique niveau 1/2 pour les clients fibre optique de SFR (France).</span><span data-en class="block">Level 1/2 technical support for SFR (France) fiber-optic customers.</span></li>
+          <li><span data-fr>Diagnostic d'incidents réseau (FTTH/FTTB), résolution à distance et escalade structurée.</span><span data-en class="block">Network incident diagnosis (FTTH/FTTB), remote resolution and structured escalation.</span></li>
+          <li><span data-fr>Gestion de plus de 40 appels/jour avec atteinte des objectifs SLA.</span><span data-en class="block">Handling 40+ calls per day, meeting SLA targets.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="wrap">
+  <div class="sec-head">
+    <span class="sec-num">03 / <span data-fr>Projets</span><span data-en>Projects</span></span>
+    <h2 class="sec-title"><span data-fr>Projets sélectionnés</span><span data-en>Selected projects</span></h2>
+  </div>
+  <div class="ledger">
+
+    <div class="row reveal">
+      <div class="idx">01</div>
+      <div class="name"><span data-fr>Chatbot RAG</span><span data-en>RAG Chatbot</span></div>
+      <div class="desc"><span data-fr>Assistant bilingue (RU/FR) pour TUSUR. Architecture hybride RASA + Retrieval-Augmented Generation, 100% open source, réponses sourcées sur la documentation officielle. Projet de Master 2.</span><span data-en class="block">Bilingual assistant (RU/FR) for TUSUR. Hybrid RASA + RAG architecture, fully open source, answers sourced from official docs. MSc thesis project.</span>
+        <div class="stack"><span>RASA</span><span>RAG</span><span>LLM</span><span>Vector DB</span><span>Python</span></div>
+      </div>
+      <div class="links"><a href="https://github.com/benus-code/chatbotinos_local" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+
+    <div class="row reveal">
+      <div class="idx">02</div>
+      <div class="name"><span data-fr>Service VPN auto-hébergé</span><span data-en>Self-hosted VPN</span></div>
+      <div class="desc"><span data-fr>Déploiement et opération d'un serveur VPN sur VPS (Docker, multi-protocoles) avec 50+ abonnés actifs : tableau de bord admin, bot Telegram, facturation, monitoring et optimisation QoS du trafic.</span><span data-en class="block">VPS VPN server (Docker, multi-protocol) with 50+ active subscribers: admin dashboard, Telegram bot, billing, monitoring and QoS traffic optimization.</span>
+        <div class="stack"><span>Docker</span><span>Linux</span><span>WireGuard</span><span>Telegram Bot</span><span>QoS</span></div>
+      </div>
+      <div class="links"><a href="https://github.com/benus-code/Fact_vpn" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+
+    <div class="row reveal">
+      <div class="idx">03</div>
+      <div class="name">SocialWishlist <span class="live">● LIVE</span></div>
+      <div class="desc"><span data-fr>Application web &amp; mobile de cagnotte collaborative pour offrir un cadeau lors d'un événement (mariage, anniversaire…). Création de listes, contributions partagées. Déployée en production.</span><span data-en class="block">Web &amp; mobile collaborative gift-fund app for events (weddings, birthdays…). Wishlist creation, shared contributions. Deployed in production.</span>
+        <div class="stack"><span>React</span><span>Node</span><span>Render</span><span>Mobile</span></div>
+      </div>
+      <div class="links"><a href="https://socialwishlist-frontend.onrender.com" target="_blank" rel="noopener"><span data-fr>Démo live</span><span data-en>Live demo</span></a><a href="https://github.com/benus-code/SocialWishlist" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+
+    <div class="row reveal">
+      <div class="idx">04</div>
+      <div class="name">Black Power Money <span class="lock">PRIVÉ</span></div>
+      <div class="desc"><span data-fr>Application fintech de transfert d'argent avec intégration Mobile Money. Application mobile, back-office d'administration, moteur de transactions avec garde-fous métier.</span><span data-en class="block">Fintech money-transfer app with Mobile Money integration. Mobile app, admin back-office, transaction engine with business safeguards.</span>
+        <div class="stack"><span>Fintech</span><span>Mobile Money</span><span>Mobile</span><span>Backend</span></div>
+      </div>
+      <div class="links"></div>
+    </div>
+
+    <div class="row reveal">
+      <div class="idx">05</div>
+      <div class="name"><span data-fr>Automatisation IA</span><span data-en>AI Automation</span></div>
+      <div class="desc"><span data-fr>Workflows auto-hébergés connectant n8n, Supabase, Telegram et un modèle Llama 3. Pipeline d'automatisation IA fonctionnel, déployé sur infrastructure personnelle.</span><span data-en class="block">Self-hosted workflows connecting n8n, Supabase, Telegram and a Llama 3 model. Working AI automation pipeline on personal infrastructure.</span>
+        <div class="stack"><span>n8n</span><span>Supabase</span><span>Llama 3</span><span>Telegram</span></div>
+      </div>
+      <div class="links"><a href="https://github.com/benus-code/n8n-ai-automation" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+
+    <div class="row reveal">
+      <div class="idx">06</div>
+      <div class="name"><span data-fr>Billetterie (ADECT)</span><span data-en>Event ticketing (ADECT)</span></div>
+      <div class="desc"><span data-fr>Déploiement d'une plateforme de billetterie pour la soirée de gala de l'association ADECT : génération et gestion des billets, suivi des participants.</span><span data-en class="block">Ticketing platform for the ADECT association gala: ticket generation and management, attendee tracking.</span>
+        <div class="stack"><span>PHP</span><span>Ticketing</span><span>Self-hosted</span></div>
+      </div>
+      <div class="links"><a href="https://github.com/benus-code/Attendize_" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="education" class="wrap">
+  <div class="sec-head">
+    <span class="sec-num">04 / <span data-fr>Formation</span><span data-en>Education</span></span>
+    <h2 class="sec-title"><span data-fr>Formation</span><span data-en>Education</span></h2>
+  </div>
+  <div class="tl">
+    <div class="tl-item reveal">
+      <div class="tl-date">2024 — 2026</div>
+      <div class="tl-body">
+        <h3><span data-fr>Master — Informatique &amp; Ingénierie informatique (09.04.01)</span><span data-en>Master's — Computer Science &amp; Engineering (09.04.01)</span></h3>
+        <p class="tl-org">TUSUR · <span data-fr>Faculté des Systèmes Informatiques (ФВС), dépt. EMIS</span><span data-en>Faculty of Computing Systems, EMIS Dept.</span> · Tomsk, RU</p>
+        <p class="tl-detail"><span class="badge-h">Anabin H+</span> <span data-fr>Diplôme reconnu en Allemagne. Mémoire : automatisation IA &amp; RAG.</span><span data-en class="block">Degree recognized in Germany. Thesis: AI automation &amp; RAG.</span></p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date">2019 — 2020</div>
+      <div class="tl-body">
+        <h3><span data-fr>Licence — Administration Systèmes &amp; Réseaux</span><span data-en>Bachelor's — Systems &amp; Network Administration</span></h3>
+        <p class="tl-org">IUT de Douala · <span data-fr>Université de Douala, Cameroun</span><span data-en>University of Douala, Cameroon</span></p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date">2017 — 2019</div>
+      <div class="tl-body">
+        <h3><span data-fr>DUT — Génie des Réseaux &amp; Télécommunications</span><span data-en>Higher Diploma — Network &amp; Telecom Engineering</span></h3>
+        <p class="tl-org">IUT de Douala · <span data-fr>Université de Douala, Cameroun</span><span data-en>University of Douala, Cameroon</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap">
+  <div class="contact">
+    <h2><span data-fr>Construisons quelque chose <em>ensemble.</em></span><span data-en>Let's build something <em>together.</em></span></h2>
+    <p><span data-fr>Ouvert aux opportunités en développement, DevOps et systèmes — en Europe, au Canada et en remote.</span><span data-en class="block">Open to opportunities in development, DevOps and systems — in Europe, Canada and remote.</span></p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:benuslavision@gmail.com">Email</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/joseph-lustigier-mbong-2517aa19a" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/benus-code" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Mbong Joseph Lustigier · benus-code — <span data-fr>Conçu &amp; développé avec soin.</span><span data-en>Designed &amp; built with care.</span></p>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('langToggle');
+  btn.addEventListener('click', ()=>{
+    document.body.classList.toggle('en');
+    const en = document.body.classList.contains('en');
+    btn.textContent = en ? 'FR' : 'EN';
+    document.documentElement.lang = en ? 'en' : 'fr';
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((e)=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.12});
+    reveals.forEach((el,i)=>{ el.style.transitionDelay=(i%5*0.05)+'s'; io.observe(el); });
+  } else {
+    reveals.forEach((el)=>el.classList.add('in'));
+  }
+</script>
+</body>
+</html>
