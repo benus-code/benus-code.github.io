@@ -187,7 +187,8 @@
   </p>
   <div class="cta reveal">
     <a class="btn btn-primary" href="#projects"><span data-fr>Voir les projets</span><span data-en>View projects</span></a>
-    <a class="btn btn-ghost" href="CV_Mbong_Joseph_Lustigier_EN.docx" download><span data-fr>Télécharger le CV</span><span data-en>Download CV</span></a>
+    <a class="btn btn-ghost" id="cvDownload" href="cv-fr.pdf" download><span data-fr>Télécharger le CV</span><span data-en>Download CV</span></a>
+    <a class="link-inline" href="cv-ru.pdf" download><span data-fr>CV (RU) ↓</span><span data-en>CV (RU) ↓</span></a>
     <a class="link-inline" href="#contact"><span data-fr>Me contacter →</span><span data-en>Get in touch →</span></a>
   </div>
 
@@ -377,11 +378,13 @@
 
 <script>
   const btn = document.getElementById('langToggle');
+  const cv = document.getElementById('cvDownload');
   btn.addEventListener('click', ()=>{
     document.body.classList.toggle('en');
     const en = document.body.classList.contains('en');
     btn.textContent = en ? 'FR' : 'EN';
     document.documentElement.lang = en ? 'en' : 'fr';
+    cv.setAttribute('href', en ? 'cv-en.pdf' : 'cv-fr.pdf');
   });
 
   const reveals = document.querySelectorAll('.reveal');
