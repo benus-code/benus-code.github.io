@@ -124,5 +124,5 @@ Ce projet démontre qu'un système d'automatisation intelligent, fiable et auto-
 Functional prototype — validated through test scenarios. Fully-local production deployment paused due to VPS resource constraints; cloud demo instance used for presentations.
 
 ## 👤 Author
-**Mbong Joseph Lustigier** — MSc Computer Science, TUSUR (group 544-M)
+**Mbong Joseph Lustigier**
 GitHub: [benus-code](https://github.com/benus-code)
